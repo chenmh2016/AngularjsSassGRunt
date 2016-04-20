@@ -8,7 +8,7 @@
  * Controller of the angularSassGruntApp
  */
 angular.module('angularSassGruntApp')
-  .controller('AboutCtrl', ['$scope','serviceW', function ($scope,serviceW) {
+  .controller('AboutCtrl', ['$scope', 'service_S', 'service_F', function ($scope, service_S, service_F) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -16,6 +16,8 @@ angular.module('angularSassGruntApp')
     ];
 
     $scope.test = 'Hello World';
-    this.serviceTest = serviceW.getName();
-    console.log(serviceW.getName());
+    $scope.serviceService = service_S.getName();
+    $scope.factoryService = service_F.getNames('hi');
+    console.log(service_S.getName());
+    console.log(service_F.getNames('World'));
   }]);
