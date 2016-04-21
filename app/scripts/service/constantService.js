@@ -10,3 +10,12 @@ app.constant('serivce_C', {
     config1: 'hello',
     config2: 'i am from constant.'
 });
+
+/*
+ Value和上面的constant很相似，唯一是其在赋值后还可以被改变。
+ 它也被常用于directive配置信息。Value service只会保留values，我们不会在service中计算其值。
+*/
+app.value('valueConfig', {
+    valueConfig1: true,
+    valueConfig2: 'i am from valueConfig.'
+});

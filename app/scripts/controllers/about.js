@@ -8,7 +8,8 @@
  * Controller of the angularSassGruntApp
  */
 angular.module('angularSassGruntApp')
-  .controller('AboutCtrl', ['$scope', 'service_S', 'service_F', 'serivce_C', function ($scope, service_S, service_F, service_C) {
+  .controller('AboutCtrl', ['$scope', 'service_S', 'service_F', 'serivce_C', 'valueConfig',
+      function ($scope, service_S, service_F, service_C, valueConfig) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -21,4 +22,9 @@ angular.module('angularSassGruntApp')
     console.log(service_S.getName());
     console.log(service_F.getNames('World'));
     $scope.constantConfig = service_C;
+    $scope.constantConfig.test = 'test';
+    $scope.valueConfig = valueConfig;
+    angular.extend(valueConfig, {
+      valueConfig3: 'i have been extended.'
+    })
   }]);
