@@ -29,4 +29,5 @@ angular.module('angularSassGruntApp')
     })
 
     $scope.foo = foo;
+    $scope.fn = foo.getPrivate();
   }]);
