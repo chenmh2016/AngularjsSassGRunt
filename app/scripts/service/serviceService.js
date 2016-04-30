@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('angularSassGruntApp');
+//var app = angular.module('angularSassGruntApp');
 app.service('service_S', function(){
 	this.getName =  function(){
 		return 'service service';

@@ -4,7 +4,7 @@
  constant可以译作常量，因为我们所设置的值value是不能被改变的。其可以接受基础类型和object对象
 */
 'use strict';
-var app = angular.module('angularSassGruntApp');
+//var app = angular.module('angularSassGruntApp');
 
 app.constant('serivce_C', {
     config1: 'hello',

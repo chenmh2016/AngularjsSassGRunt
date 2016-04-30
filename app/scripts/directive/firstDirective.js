@@ -1,8 +1,8 @@
 'use strict';
-var app = angular.module('angularSassGruntApp', []);
+//var app = angular.module('angularSassGruntApp');
 app.directive('myDirective', function(){
 		return {
-			restrict: 'E',
-			template: '<a href="www.baidu.com">百度</a>'
+			restrict: 'AE',
+			template: '<a href="#">directive</a>'
 		};
 	});

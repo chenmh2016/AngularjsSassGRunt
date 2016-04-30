@@ -1,6 +1,6 @@
 
 'use strict';
-var app = angular.module('angularSassGruntApp');
+//var app = angular.module('angularSassGruntApp');
 
 app.provider('foo', function() {
     return {

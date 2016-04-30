@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('angularSassGruntApp');
+//var app = angular.module('angularSassGruntApp');
 
 app.factory('service_F', function(){
 	var serviceInstance = function(value){
