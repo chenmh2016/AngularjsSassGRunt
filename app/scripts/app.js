@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-var app = angular.module('angularSassGruntApp', ['ngResource','ngRoute']);
+var app = angular.module('deployWebApp', ['ngResource','ngRoute']);
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -19,6 +19,11 @@ app.config(function ($routeProvider) {
       })
       .when('/about', {
         templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+      })
+      .when('/chen', {
+        templateUrl: 'views/chen.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })

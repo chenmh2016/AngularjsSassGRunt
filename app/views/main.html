@@ -1,23 +1,93 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<style>
+    .important {
+        color: red;
+    }
+</style>
+<div class="main" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-sm-12">
+            <details open>
+                <summary style="margin-bottom:10px;color: #69b4ee;font-weight: bold;cursor: pointer;">基础信息</summary>
+               
+                <form class="form-horizontal" name="form" role="form" novalidate>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">master宿主机IP<span class="important">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control"
+                                   placeholder="请输入master宿主机的Ip地址"
+                                   ng-model="formData.ip_master"
+                                   ng-pattern="/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/"
+                                   name="ip_master" required>
+                        </div>
+                        <div class="col-sm-6" ng-show="form.ip_master.$dirty && form.ip_master.$invalid" style="padding-top: 5px;">
+                                <span style="color: red" ng-show="form.ip_master.$invalid">请输入正确的ip地址</span>
+                        </div>
+                    </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">salve宿主机IP<span class="important">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control"
+                                   placeholder="请输入salve宿主机的Ip地址"
+                                   ng-model="formData.ip_slave"
+                                   name="ip_slave" required>
+                        </div>
+                    </div>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Beaver Server IP<span class="important">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control"
+                                   placeholder="请输入Beaver Server的Ip地址"
+                                   ng-model="formData.ip_beaver_server1"
+                                   name="ip_beaver_server1" required>
+                        </div>
+                    </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Beaver Client IP<span class="important">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control"
+                                   placeholder="请输入Beaver Client的Ip地址"
+                                   ng-model="formData.ip_beaver_client1"
+                                   name="ip_beaver_client1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">是否安装ntp-server<span class="important">*</span></label>
+                        <div class="col-sm-1">
+                            <select class="form-control" name="" id="" ng-model="formData.install_ntp_server_orNot">
+                                <option value="yes">是</option>
+                                <option value="no">否</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" ng-show="formData.install_ntp_server_orNot=='yes'">
+                        <label class="col-sm-2 control-label">Ntp服务器Ip地址<span class="important">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control"
+                                   placeholder="请输入Ntp服务器Ip地址"
+                                   ng-model="formData.ntp_server"
+                                   name="ntp_server" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-default pull-right" >重置
+                            </button>
+                            <button class="btn btn-primary pull-right" ng-click="addMonitor()" ng-disabled="form.$invalid" style="margin-right: 10px;">提交
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </details>
+        </div>
+    </div>
+
+
 </div>

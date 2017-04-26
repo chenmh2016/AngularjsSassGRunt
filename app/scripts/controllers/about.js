@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the angularSassGruntApp
  */
-angular.module('angularSassGruntApp')
+angular.module('deployWebApp')
   .controller('AboutCtrl', ['$scope', 'service_S', 'service_F', 'serivce_C', 'valueConfig', 'foo',
       function ($scope, service_S, service_F, service_C, valueConfig, foo) {
     this.awesomeThings = [
