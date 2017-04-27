@@ -44,17 +44,18 @@ angular.module('deployWebApp')
         arr.push({"ip": ''});
         $scope.slaveNode = arr;
     };
-    $scope.delete=function(){
+    $scope.delete=function(index){
         if(index==0){
             delete $scope.ip[index];
         }else {
-            $scope.ip.splice(index, 1);
+            $scope.slaveNode.splice(index, 1);
         }
     };
     $scope.run = function () {
         $scope.formData.install_cloud_monitor_orNot = "no";
         $scope.formData.isOS_aegisclient = "no";
         $scope.formData.install_ntp_server_orNot = "yes";
+
     };
     $scope.run();
 
@@ -76,7 +77,14 @@ angular.module('deployWebApp')
         },function(data){
 
         });
-          
+
+    };
+    $scope.clear=function(){
+        var $form=$("#ad")
+        var $names=$form.find("[type='text'],[type='password']");
+        $names.each(function(){
+            $(this).val("");
+        })
     }
 
 }

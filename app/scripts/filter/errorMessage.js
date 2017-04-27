@@ -6,7 +6,8 @@ app.filter('error', function (){
             required:'此项不能为空！',
             pattern:'请输入合法的Ip地址！',
             same:'请保证输入的Ip地址与设定的网段相同！',
-            email:'请输入正确的邮箱格式！'
+            email:'请输入正确的邮箱格式！',
+            number:'请输入合法的数字！'
         };
         return function(name){
             return message[name]||name;

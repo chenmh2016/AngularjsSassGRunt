@@ -14,7 +14,7 @@ app.directive('errorMessageDir', function errorMessageDir($compile){
 					return ngModel.$error;
 				};
 				//在当前元素（即input元素）的父元素的后面追加一个元素，展示错误提示信息
-				var hint=$compile('<div class="col-sm-6" ng-if="hasError()" style="padding-top: 5px"><span style="color:red" ng-repeat="(name,wrong) in errors()" ng-if="wrong">{{name|error}}</span></div>')(subScope);
+				var hint=$compile('<div class="col-sm-3" ng-if="hasError()" style="padding-top: 5px"><span style="color:red" ng-repeat="(name,wrong) in errors()" ng-if="wrong">{{name|error}}</span></div>')(subScope);
 				element.parent().after(hint);
 			}
 
