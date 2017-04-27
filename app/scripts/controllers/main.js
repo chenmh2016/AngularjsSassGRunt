@@ -9,8 +9,8 @@
  */
 angular.module('deployWebApp')
     .controller('MainCtrl', controllerFn);
-    controllerFn.$inject = ['$scope', '$injector','$http'];
-    function controllerFn($scope, $injector,$http) {
+    controllerFn.$inject = ['$scope', '$injector','$http','toaster'];
+    function controllerFn($scope, $injector,$http,toaster) {
     $(function () {
         $("[data-toggle='tooltip']").tooltip();
     });
@@ -59,18 +59,24 @@ angular.module('deployWebApp')
     $scope.run();
 
     $scope.addInfomation=function(){
+
         $http({
             method: "GET",
-            url: "../../../../system/user/isLoginNameUsable.json?loginName=" + inputname
-        }).
-            success(function (data) {
-                if (data.success) {
-                    console.log("ok")
-                }
-                else {
-                    console.log("fail")
-                }
-            })
+            data:angular.toJson($scope.formData),
+            url: "/data/addInfo.json"
+        }).then(function(data){
+            if (data.data.success) {
+                toaster.clear(toastInstance);//注释这句和加上这句看看效果就明白了
+                var toastInstance = toaster.pop('success', "配置设置成功");
+                toastInstance();
+            } else{
+                toaster.clear(toastInstance);//注释这句和加上这句看看效果就明白了
+                var toastInstance = toaster.pop('error', "配置设置失败");}
+                toastInstance();
+        },function(data){
+
+        });
+          
     }
 
 }

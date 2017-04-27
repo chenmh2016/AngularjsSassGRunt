@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc overview
- * @name angularSassGruntApp
+ * @name deployWebApp
  * @description
- * # angularSassGruntApp
+ * # deployWebApp
  *
  * Main module of the application.
  */
-var app = angular.module('deployWebApp', ['ngResource','ngRoute']);
+var app = angular.module('deployWebApp', ['ngResource','ngRoute','toaster','ngAnimate']);
 
 app.config(function ($routeProvider) {
     $routeProvider
