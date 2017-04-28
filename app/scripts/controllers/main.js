@@ -56,9 +56,24 @@ angular.module('deployWebApp')
         $scope.formData.isOS_aegisclient = "no";
         $scope.formData.install_ntp_server_orNot = "yes";
 
+
+        $http({
+            method:"GET",
+            url:"/data/getInfo.json"
+            //cache:true
+        }).then(function(data){
+            $scope.name=data.data.data.name;
+        })
+
     };
     $scope.run();
-
+    $scope.get=function(){
+        $http({
+            method:"GET",
+            params:{"data":"1"},
+            url:"/data/addInfo.json"
+        });
+    };
     $scope.addInfomation=function(){
         var string=angular.toJson($scope.formData);
         $http({
