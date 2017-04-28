@@ -3,22 +3,20 @@
         <div class="col-sm-12">
             <details open>
                 <summary>基础信息</summary>
-                <form  id="ad" class="form-horizontal" name="form" role="form" novalidate>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">网段信息<span class="important">*</span></label>
-
-                        <div class="col-sm-4">
-                            <input error-message-dir type="text" class="form-control"
-                                   placeholder="请输入本次部署准备的网段信息"
-                                   ng-model="formData.netSegment"
-                                   ng-pattern="/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/"
-                                   name="netSegment" required>
-                              <span data-toggle="tooltip" title="请提前设置本次部署所在的网段信息，一些ip地址会以此为依据进行校验。" data-container="body"
-                                    data-placement="right" class="glyphicon glyphicon-question-sign tipStyle"></span>
-                        </div>
-
-
-                    </div>
+                <form  id="form1" class="form-horizontal" name="form" role="form" novalidate>
+                    <!--<div class="form-group">-->
+                        <!--<label class="col-sm-2 control-label">网段信息<span class="important">*</span></label>-->
+                        <!--<div class="col-sm-4">-->
+                            <!--<input error-message-dir type="text" class="form-control"-->
+                                   <!--placeholder="请输入本次部署准备的网段信息"-->
+                                   <!--ng-model="formData.netSegment"-->
+                                   <!--ng-pattern="/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/"-->
+                                   <!--name="netSegment" required>-->
+                              <!--<span data-toggle="tooltip" title="请提前设置本次部署所在的网段信息，一些ip地址会以此为依据进行校验。" data-container="body"-->
+                                    <!--data-placement="right" class="glyphicon glyphicon-question-sign tipStyle"></span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--net-seg-or-not="formData.netSegment"-->
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">master宿主机IP<span class="important">*</span></label>
@@ -28,19 +26,19 @@
                                    placeholder="请输入master宿主机的Ip地址"
                                    ng-model="formData.ip_master"
                                    ng-pattern="/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/"
-                                   name="ip_master" required net-seg-or-not="formData.netSegment">
+                                   name="ip_master" required >
                         </div>
                     </div>
 
                     <div class="form-group"  ng-repeat="item in slaveNode">
                         <label class="col-sm-2 control-label" ng-show="{{$index==0}}">salve宿主机IP<span class="important">*</span></label>
-                        <label class="col-sm-2 control-label" ng-show="{{$index!=0}}">其他结点IP</label>
+                        <label class="col-sm-2 control-label" ng-show="{{$index!=0}}" style="color:#908c8c;">其他结点IP</label>
                         <div class="col-sm-4">
                             <input error-message-dir type="text" class="form-control"
                                    placeholder="请输入salve宿主机的Ip地址"
                                    ng-model="item.ip"
                                    ng-pattern="/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/"
-                                   name="ip_slave" required net-seg-or-not="formData.netSegment">
+                                   name="ip_slave" required>
                             <span  ng-click="add()" href="javascript:;" class="glyphicon glyphicon-plus-sign tipStyle" style="color:#69b4ee"
                                ng-show="{{$index==0}}" ng-class="{'disabled':form.ip_slave.$invalid}"></span>
                             <span  ng-click="delete($index)" href="javascript:;" ng-hide="{{$index==0}}" style="color:#69b4ee" class="glyphicon glyphicon-remove-circle tipStyle"></span>
@@ -87,7 +85,7 @@
                     </div>
 
 
-                    <div class="form-group" ng-show="formData.install_ntp_server_orNot=='yes'">
+                    <div class="form-group" ng-if="formData.install_ntp_server_orNot=='yes'">
                         <label class="col-sm-2 control-label">Ntp服务器Ip地址<span class="important">*</span></label>
 
                         <div class="col-sm-4">
@@ -155,7 +153,7 @@
         <div class="col-sm-12">
             <details>
                 <summary>云盾数据库配置信息</summary>
-                <form class="form-horizontal" novalidate name="form2">
+                <form class="form-horizontal" novalidate name="form2" id="form2">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">yundun账号密码</label>
 
@@ -185,7 +183,7 @@
         <div class="col-sm-12">
             <details>
                 <summary>域名信息设置</summary>
-                <form class="form-horizontal" novalidate name="form3">
+                <form class="form-horizontal" novalidate name="form3" id="form3">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">cas、console域名后缀</label>
 
@@ -221,14 +219,14 @@
         <div class="col-sm-12">
             <details>
                 <summary>VIP设置</summary>
-                <form class="form-horizontal" novalidate name="form4">
+                <form class="form-horizontal" novalidate name="form4" id="form4">
                     <div class="form-group" ng-repeat="item in vips">
                         <label class="col-sm-2 control-label">{{item.name}}</label>
 
                         <div class="col-sm-4">
                             <input type="text" class="form-control" placeholder="请设置{{item.name}}" name="{{item.name}}"
                                    ng-model="formData[item.name]" ng-pattern="/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/"
-                                   required error-message-dir net-seg-or-not="formData.netSegment" />
+                                   required error-message-dir/>
                         </div>
                     </div>
                 </form>
@@ -241,7 +239,7 @@
             <details>
                 <summary>邮件网关相关设置</summary>
 
-                <form novalidate  class="form-horizontal" name="form5">
+                <form novalidate  class="form-horizontal" name="form5" id="form5">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">邮件网关</label>
                         <div class="col-sm-4">
@@ -283,7 +281,7 @@
 
             <button class="btn btn-default pull-right" ng-click="clear()">重置
             </button>
-            <button class="btn btn-primary pull-right" ng-click="addInfomation()" ng-disabled="form.$invalid"
+            <button class="btn btn-primary pull-right" ng-click="addInfomation()" ng-disabled="form.$invalid||form2.$invalid||form3.$invalid||form4.$invalid||form5.$invalid"
                     style="margin-right: 10px;">提交
             </button>
         </div>

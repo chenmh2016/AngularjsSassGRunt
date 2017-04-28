@@ -60,19 +60,20 @@ angular.module('deployWebApp')
     $scope.run();
 
     $scope.addInfomation=function(){
-
+        var string=angular.toJson($scope.formData);
         $http({
             method: "GET",
-            data:angular.toJson($scope.formData),
-            url: "/data/addInfo.json"
+            url: "/data/addInfo.json?params=" + string
         }).then(function(data){
             if (data.data.success) {
                 toaster.clear(toastInstance);//注释这句和加上这句看看效果就明白了
-                var toastInstance = toaster.pop('success', "配置设置成功");
+                var toastInstance =
+                    toaster.pop('success', "配置设置成功");
                 toastInstance();
             } else{
                 toaster.clear(toastInstance);//注释这句和加上这句看看效果就明白了
-                var toastInstance = toaster.pop('error', "配置设置失败");}
+                var toastInstance =
+                    toaster.pop('error', "配置设置失败");}
                 toastInstance();
         },function(data){
 
@@ -80,11 +81,18 @@ angular.module('deployWebApp')
 
     };
     $scope.clear=function(){
-        var $form=$("#ad")
-        var $names=$form.find("[type='text'],[type='password']");
+        var $form1=$("#form1");
+        var $form2=$("#form2");
+        var $form3=$("#form3");
+        var $form4=$("#form4");
+        var $form5=$("#form5");
+        var array=[$form1,$form2,$form3,$form4,$form5];
+    for(var i=0;i<5;i++){
+        var $names=array[i].find("[type='text'],[type='password'],[type='number'],[type='email']");
         $names.each(function(){
             $(this).val("");
         })
+    }
     }
 
 }
