@@ -1,0 +1,72 @@
+<div class="loadPage">
+    <div class="alert alert-success">
+        <span>目前我们提供了三种负载的配置，您还可以根据自己的需要进行自定义负载配置。</span>
+    </div>
+
+    <ul class="nav nav-tags">
+        <li style="padding-top: 3px;"><span>请选择负载配置：</span></li>
+        <li ng-repeat="item in loadGroup"><a href="javascript:;" class="tab-span"
+                                             ng-class="{active:isActive==item.Index}" ng-click="select(item)">{{item.group}}</a>
+        </li>
+        <li><a class="tab-span" ng-class="{active: isActive=='diy'}" ng-click="select()">自定义</a></li>
+    </ul>
+    <!--<span class="glyphicon glyphicon-list-alt icon-font" ng-mouseover="show=true" ng-mouseout="show=false"></span>-->
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div ng-switch="isActive">
+                <!--两个节点的情况-->
+                <div ng-switch-when="2" class="angularTree">
+                    <!-- Nested node template -->
+                    <script type="text/ng-template" id="nodes_renderer.html">
+                        <div ui-tree-handle class="tree-node tree-node-content">
+                            <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag
+                               ng-click="toggle(this)"><span
+                                    class="glyphicon"
+                                    ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed }"></span></a>
+                            {{node.title}}
+                        </div>
+                        <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+                            <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+                            </li>
+                        </ol>
+                    </script>
+
+                    <div class="row" style="margin-top: 20px;padding-left: 10px;">
+                        <div class="col-sm-12">
+                            <button ng-click="expandAll()" class="btn btn-default">展开所有节点信息</button>
+                            <button ng-click="collapseAll()" class="btn btn-primary">折叠所有节点信息</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div ui-tree id="tree-root">
+                                <ol ui-tree-nodes ng-model="data">
+                                    <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+                                </ol>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div ng-switch-when="4">
+                    <h1>Google4</h1>
+                    <p>欢迎访问Google</p>
+                </div>
+                <div ng-switch-when="6">
+                    <h1>淘宝5</h1>
+                    <p>欢迎访问淘宝</p>
+                </div>
+                <div ng-switch-default>
+                    <h1>其他</h1>
+                    <p>选择不同选项显示对应的值。</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

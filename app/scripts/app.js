@@ -8,32 +8,51 @@
  *
  * Main module of the application.
  */
-var app = angular.module('deployWebApp', ['ngResource','ngRoute','toaster','ngAnimate','ngCookies']);
+var app = angular.module('deployWebApp', ['ngResource','ngRoute','toaster','ngAnimate','ngCookies','ui.router','ui.tree']);
+//ng-view的用法
+//app.config(function ($routeProvider,$httpProvider) {
+//  $httpProvider.interceptors.push('myInterceptor');
+//  $httpProvider.defaults.headers.common['X-TEST-BY']='myAngularjsApp';
+//
+  //$routeProvider
+  //    .when('/', {
+  //      templateUrl: 'views/main.html',
+  //      controller: 'MainCtrl',
+  //      controllerAs: 'main'
+  //    })
+  //    .when('/about', {
+  //      templateUrl: 'views/about.html',
+  //      controller: 'AboutCtrl',
+  //      controllerAs: 'about'
+  //    })
+  //    .when('/chen', {
+  //      templateUrl: 'views/chen.html',
+  //      controller: 'AboutCtrl',
+  //      controllerAs: 'about'
+  //    })
+  //    .otherwise({
+  //      redirectTo: '/'
+  //    });
+  //});
+app.config(function($stateProvider){
+  $stateProvider
+  //.state('yundun',{
+  //  url:'/yundun',
+  //  template:'<div ui-view></div>',
+  //  abstract:true
+  //})
+      .state('yundun',{
+        url:'/yundun',
+        templateUrl:'views/main.html',
+        controller:'MainCtrl as vm'
+      })
 
-app.config(function ($routeProvider,$httpProvider) {
-  $httpProvider.interceptors.push('myInterceptor');
-  $httpProvider.defaults.headers.common['X-TEST-BY']='myAngularjsApp';
-
-  $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+      .state('test',{
+        url:'/test',
+        templateUrl:'views/test.html',
+        controller:'loadCtrl as vm'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .when('/chen', {
-        templateUrl: 'views/chen.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+});
 app.factory('myInterceptor',function($q,$cookies){
   var interceptor={
     'request':function(config){

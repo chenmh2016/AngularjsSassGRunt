@@ -4,6 +4,7 @@
 $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "iconfont.scss";
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -68,27 +69,224 @@ body {
   }
 }
 
-
-
-
 //by cmh
 .main {
+  margin-top: 20px;
   .important {
     color: red;
   }
-  summary{
-    margin-bottom:10px;
+  summary {
+    margin-bottom: 10px;
     color: #69b4ee;
     font-weight: bold;
     cursor: pointer;
     font-size: 16px;
   }
-  .tipStyle{
+  .tipStyle {
     position: absolute;
     right: -10px;
     color: red;
     font-size: 19px;
     padding-top: 3px;
+  }
+}
+
+.sidebar {
+  background-color: #293038;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  padding: 0;
+  ul, li {
+    list-style: none;
+  }
+  ul {
+    padding-left: 0;
+  }
+  li:hover {
+    background: #313844;
+  }
+  .sidebar-fold {
+    height: 30px;
+    background: #394555;
+    color: #aeb9c2;
+    text-align: center;
+    line-height: 30px !important;
+    font-size: 12px;
+    user-select: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    &:hover {
+      background: #37424f;
+    }
+  }
+
+  .icon-unfold:before {
+    content: "\e707";
+  }
+  .icon-fold:before {
+    content: "\e706";
+  }
+  .sidebar-title-arrow {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    font-size: 10px;
+  }
+  .trans {
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg); /* Internet Explorer */
+    -moz-transform: rotate(90deg); /* Firefox */
+    -webkit-transform: rotate(90deg); /* Safari 和 Chrome */
+    -o-transform: rotate(90deg); /* Opera */
+  }
+  .sidebar-title {
+    background: #37424f;
+    border-bottom: 1px solid #414d5c;
+    height: 40px;
+    line-height: 40px;
+  }
+  .sidebar-content {
+    li {
+      display: block;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      overflow: hidden;
+      .sidebar-content-icon {
+        float: left;
+        width: 40px;
+        text-align: center;
+      }
+      span {
+        width: 130px;
+      }
+    }
+    .active {
+      background-color: #0099cc;
+    }
+  }
+  .mini-content {
+    display: none;
+  }
+
+}
+
+.loadPage {
+  margin-top: 20px;
+  .alert {
+    padding: 6px 12px;
+    line-height: 18px;
+    margin-bottom: 16px;
+  }
+  .alert-success {
+    color: #090;
+    background-color: #f2ffea;
+    border-color: #c7ddb9;
+  }
+
+  .nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+  }
+  .nav-tabs > li {
+    margin-left: -1px;
+    border-top: 1px solid #DDD;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    z-index: 1;
+  }
+  .nav-tabs > li.active {
+    border-top: 0px;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    z-index: 3;
+  }
+
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border-top: 2px solid #00A2CA;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid #FFF;
+    color: #333;
+  }
+  .nav-tabs > li > a, .nav-tabs > li > a:focus {
+    color: #666;
+    border-left: 0px;
+    border-right: 0px;
+    margin-right: 0px;
+    padding: 10px 16px;
+    background: #FBFAF8;
+    border-bottom: 0px;
+  }
+  .nav-tabs > li > a, .nav-tabs.nav-justified > li > a {
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  .tab-span {
+    display: inline-block;
+    padding: 4px 6px;
+    margin-right: 2px;
+    cursor: pointer;
+    color: #999;
+    text-decoration: none;
+    background-color: #D9DEE4;
+    .icon-font {
+      font-size: 18px;
+      margin-right: 5px;
+    }
+  }
+
+  .nav-tags li {
+    margin-right: 10px;
+    float: left;
+    .tab-span.active {
+      color: #fff;
+      background: #546478;
+      border: 1px solid #546478;
+    }
+  }
+  .tab-span:hover {
+    //color:#fff;
+    background: #D9DEE4;
+    border: 1px solid #D9DEE4;
+  }
+
+  /* --- Tree --- */
+  .angularTree {
+    .angular-ui-tree-handle{
+      padding:10px 10px;
+    }
+    .tree-node {
+      border: 1px solid #dae2ea;
+      background: #f8faff;
+      color: #7c9eb2;
+    }
+
+    .nodrop {
+      background-color: #f2dede;
+    }
+
+    .tree-node-content {
+      margin: 10px;
+    }
+    .tree-handle {
+      padding: 10px;
+      background: #428bca;
+      color: #FFF;
+      margin-right: 10px;
+    }
+
+    .angular-ui-tree-handle:hover {
+    }
+
+    .angular-ui-tree-placeholder {
+      background: #f0f9ff;
+      border: 2px dashed #bed2db;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
   }
 }
 
