@@ -159,7 +159,7 @@
                         <label class="col-sm-2 control-label">yundun账号密码</label>
 
                         <div class="col-sm-4">
-                            <input error-message-dir type="password" class="form-control" placeholder="yundun账号对应的密文密码，该账号拥有最高权限" required
+                            <input error-message-dir type="password" class="form-control" placeholder="yundun的密文密码，该账号拥有最高权限" required
                                    name="db_yundun_passwd_encrypt"
                                    ng-model="formData.db_yundun_passwd_encrypt"/>
                         </div>
@@ -169,7 +169,7 @@
                         <label class="col-sm-2 control-label">user账号密码</label>
 
                         <div class="col-sm-4">
-                            <input error-message-dir type="password" class="form-control" placeholder="user账号对应的明文密码，该账号拥有部分权限" required
+                            <input error-message-dir type="password" class="form-control" placeholder="user的明文密码，该账号拥有部分权限" required
                                    name="db_yundun_passwd_1"
                                    ng-model="formData.db_yundun_passwd_1" />
                         </div>
@@ -282,7 +282,8 @@
 
             <button class="btn btn-default pull-right" ng-click="clear()">重置
             </button>
-            <button class="btn btn-primary pull-right" ng-click="addInfomation()" ng-disabled="form.$invalid||form2.$invalid||form3.$invalid||form4.$invalid||form5.$invalid"
+            <!--<button class="btn btn-primary pull-right" ng-click="addInfomation()" ng-disabled="form.$invalid||form2.$invalid||form3.$invalid||form4.$invalid||form5.$invalid"-->
+            <button class="btn btn-primary pull-right" ng-click="addInfomation()"
                     style="margin-right: 10px;">提交
             </button>
         </div>

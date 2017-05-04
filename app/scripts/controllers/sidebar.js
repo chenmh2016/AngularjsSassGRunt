@@ -17,7 +17,7 @@ angular.module('deployWebApp')
         items:[
           {
             id:11,
-            title:"云盾",
+            title:"基础配置",
             url:"#/yundun",
             state:"yundun",
             groupIndex:1,
@@ -25,7 +25,7 @@ angular.module('deployWebApp')
           }
           ,{
             id:12,
-            title:"test",
+            title:"负载配置",
             state:"test",
             groupIndex:2,
             icon:"cmhIcon-xing"

@@ -9,13 +9,14 @@
  */
 angular.module('deployWebApp')
     .controller('MainCtrl', controllerFn);
-    controllerFn.$inject = ['$scope', '$injector','$http','toaster'];
-    function controllerFn($scope, $injector,$http,toaster) {
+    controllerFn.$inject = ['$rootScope','$scope', '$injector','$http','toaster'];
+    function controllerFn($rootScope,$scope, $injector,$http,toaster) {
     $(function () {
         $("[data-toggle='tooltip']").tooltip();
     });
     $scope.formData = {};
     $scope.slaveNode = [{"ip": ''}];
+
     $scope.vips = [{name: "vip_ageis"},
         {name: "vip_cactus_batch"},
         {name: "vip_cactus_keeper"},
@@ -66,6 +67,8 @@ angular.module('deployWebApp')
         });
     };
     $scope.addInfomation=function(){
+        $rootScope.nodeNumber=$scope.slaveNode.length+1;
+    console.log("nodeLength",$rootScope.nodeNumber);
         var string=angular.toJson($scope.formData);
         $http({
             method: "GET",

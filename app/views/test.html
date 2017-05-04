@@ -1,9 +1,13 @@
 <div class="loadPage">
     <div class="alert alert-success">
-        <span>目前我们提供了三种负载的配置，您还可以根据自己的需要进行自定义负载配置。</span>
+        <ul>
+            <li>目前我们提供了三种负载的配置，您还可以根据自己的需要进行自定义负载配置。</li>
+            <li>我们会根据基础配置中您设置的节点个数为您推荐合理的负载配置。</li>
+            <li>负载配置选择好之后，不要忘记点击提交按钮哦~</li>
+        </ul>
     </div>
 
-    <ul class="nav nav-tags">
+    <ul class="nav nav-tags" style="border: 1px solid #c7ddb9;padding: 10px;">
         <li style="padding-top: 3px;"><span>请选择负载配置：</span></li>
         <li ng-repeat="item in loadGroup"><a href="javascript:;" class="tab-span"
                                              ng-class="{active:isActive==item.Index}" ng-click="select(item)">{{item.group}}</a>
@@ -12,11 +16,21 @@
     </ul>
     <!--<span class="glyphicon glyphicon-list-alt icon-font" ng-mouseover="show=true" ng-mouseout="show=false"></span>-->
 
-    <div class="row">
+
+    <!--<div class="row">-->
+        <!--<div class="col-sm-12">-->
+            <!--<div class="box">-->
+                <!--<div class="circle">master</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="row" style="margin-top: 15px;margin-bottom: 15px;">
         <div class="col-sm-12">
             <div ng-switch="isActive">
                 <!--两个节点的情况-->
-                <div ng-switch-when="2" class="angularTree">
+                <div ng-switch-default class="angularTree">
                     <!-- Nested node template -->
                     <script type="text/ng-template" id="nodes_renderer.html">
                         <div ui-tree-handle class="tree-node tree-node-content">
@@ -32,41 +46,78 @@
                         </ol>
                     </script>
 
-                    <div class="row" style="margin-top: 20px;padding-left: 10px;">
-                        <div class="col-sm-12">
-                            <button ng-click="expandAll()" class="btn btn-default">展开所有节点信息</button>
-                            <button ng-click="collapseAll()" class="btn btn-primary">折叠所有节点信息</button>
-                        </div>
-                    </div>
-
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-6" style="border-right: 1px solid #c7ddb9;">
+                            <p>负载配置展示：</p>
                             <div ui-tree id="tree-root">
                                 <ol ui-tree-nodes ng-model="data">
                                     <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
                                 </ol>
                             </div>
                         </div>
+                        <div class="col-sm-4">
+                            <p>操作：</p>
+                            <p>查找 <input ng-model="query" class="form-group" ng-change="findNodes()"></p>
+                            <button ng-click="expandAll()" class="btn btn-default" style="margin-left: 10px;">展开</button>
+                            <button ng-click="collapseAll()" class="btn btn-primary">折叠</button>
+                        </div>
+                    </div>
+                </div>
 
+
+                <div ng-switch-when="diy" class="angularTree">
+                    <script type="text/ng-template" id="nodes_renderer2.html">
+                        <div class="tree-node">
+                            <div class="tree-node-content">
+                                <a class="btn btn-success btn-xs" data-nodrag ng-click="toggle(this)">
+                                    <span class="glyphicon"
+                                          ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span>
+                                </a>
+                                <input type="text" ng-model="node.title">
+                                <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
+                                        class="glyphicon glyphicon-remove"></span></a>
+                                <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)"
+                                   style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
+                            </div>
+                        </div>
+                        <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+                            <li ng-repeat="node in node.nodes" ui-tree-node>
+                                <input type="text" ng-model="node.title">
+                                <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)" style="margin-right: 9px;"><span
+                                        class="glyphicon glyphicon-remove"></span></a>
+                            </li>
+                        </ol>
+                    </script>
+
+
+                    <div class="row">
+                        <div class="col-sm-6" style="border-right: 1px solid #c7ddb9;">
+                            <p>自定义负载配置：</p>
+                            <div ui-tree id="tree2-root">
+                                <ol ui-tree-nodes="" ng-model="tree2">
+                                    <li ng-repeat="node in tree2" ui-tree-node ng-include="'nodes_renderer2.html'"></li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <p>操作：</p>
+                            <button ng-click="addNode()" class="btn btn-default"  style="margin-left: 10px;">增加节点</button>
+                            <button ng-click="expandAll()" class="btn btn-default">展开</button>
+                            <button ng-click="collapseAll()" class="btn btn-primary">折叠</button>
+                        </div>
                     </div>
 
-                </div>
-                <div ng-switch-when="4">
-                    <h1>Google4</h1>
-                    <p>欢迎访问Google</p>
-                </div>
-                <div ng-switch-when="6">
-                    <h1>淘宝5</h1>
-                    <p>欢迎访问淘宝</p>
-                </div>
-                <div ng-switch-default>
-                    <h1>其他</h1>
-                    <p>选择不同选项显示对应的值。</p>
+
                 </div>
             </div>
         </div>
 
     </div>
 
-
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-primary pull-right">提交</button>
+        </div>
+    </div>
 </div>
