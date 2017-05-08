@@ -1,4 +1,11 @@
-<div class="stepBarPage" >
+<div class="stepBarPage loadPage" >
+    <div class="alert alert-success">
+        <ul>
+            <li>当您进入这个页面时候，说明部署的准备工作包括基础配置和负载配置您都已经设置好了，若没有请尽快完成前两部分的设置。</li>
+            <li>目前我们仅提供了部署过程中较为重要的几步骤的执行状态方便您关注部署进度。</li>
+            <li>红色表示该步骤执行失败，您可以通过触发回滚按钮，重新执行该步骤。</li>
+        </ul>
+    </div>
     <div ng-repeat="step in steps" ng-class="{true:'active',false:'unactive'}[step.active]" class="step-block step-block-vertical">
         <p class="index">{{$index+1}}</p>
         <p class="str">{{step.str}}</p>

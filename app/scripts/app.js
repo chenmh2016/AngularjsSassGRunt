@@ -34,7 +34,7 @@ var app = angular.module('deployWebApp', ['ngResource','ngRoute','toaster','ngAn
   //      redirectTo: '/'
   //    });
   //});
-app.config(function($stateProvider){
+app.config(function($stateProvider,$urlRouterProvider){
   $stateProvider
   //.state('yundun',{
   //  url:'/yundun',
@@ -58,6 +58,8 @@ app.config(function($stateProvider){
           templateUrl:'views/stepBar.html',
           controller:'StepBarCtrl as vm'
       })
+    //实现了初次进入系统，首先进入基础配置页面。
+    $urlRouterProvider.otherwise('/basicConfig');
 });
 app.factory('myInterceptor',function($q,$cookies){
   var interceptor={
