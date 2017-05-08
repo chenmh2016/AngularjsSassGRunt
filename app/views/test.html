@@ -16,16 +16,6 @@
     </ul>
     <!--<span class="glyphicon glyphicon-list-alt icon-font" ng-mouseover="show=true" ng-mouseout="show=false"></span>-->
 
-
-    <!--<div class="row">-->
-        <!--<div class="col-sm-12">-->
-            <!--<div class="box">-->
-                <!--<div class="circle">master</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-
-
     <div class="row" style="margin-top: 15px;margin-bottom: 15px;">
         <div class="col-sm-12">
             <div ng-switch="isActive">
@@ -34,14 +24,14 @@
                     <!-- Nested node template -->
                     <script type="text/ng-template" id="nodes_renderer.html">
                         <div ui-tree-handle class="tree-node tree-node-content">
-                            <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag
-                               ng-click="toggle(this)"><span
+                            <a class="btn btn-success btn-xs" ng-if="(node.nodes && node.nodes.length > 0&&node.title.indexOf(form.query)!=-1)||show(node)" data-nodrag
+                               ng-click="toggle(this)" ><span
                                     class="glyphicon"
                                     ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed }"></span></a>
-                            {{node.title}}
+                            <span ng-if="(node.nodes && node.nodes.length > 0&&node.title.indexOf(form.query)!=-1)||show(node)" >{{node.title}}</span>
                         </div>
                         <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
-                            <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+                            <li ng-repeat="node in node.nodes" ui-tree-node  ng-show="visible(node)">{{node.title}}
                             </li>
                         </ol>
                     </script>
@@ -50,14 +40,14 @@
                         <div class="col-sm-6" style="border-right: 1px solid #c7ddb9;">
                             <p>负载配置展示：</p>
                             <div ui-tree id="tree-root">
-                                <ol ui-tree-nodes ng-model="data">
+                                <ol ui-tree-nodes="" ng-model="data">
                                     <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
                                 </ol>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <p>操作：</p>
-                            <p>查找 <input ng-model="query" class="form-group" ng-change="findNodes()"></p>
+                            <p>查找 <input type="text" ng-model="form.query" class="form-group" ng-change="findNodes()"></p>
                             <button ng-click="expandAll()" class="btn btn-default" style="margin-left: 10px;">展开</button>
                             <button ng-click="collapseAll()" class="btn btn-primary">折叠</button>
                         </div>
@@ -66,7 +56,7 @@
 
 
                 <div ng-switch-when="diy" class="angularTree">
-                    <script type="text/ng-template" id="nodes_renderer2.html">
+                    <script type="text/ng-template" id="nodes_renderer2.html" >
                         <div class="tree-node">
                             <div class="tree-node-content">
                                 <a class="btn btn-success btn-xs" data-nodrag ng-click="toggle(this)">

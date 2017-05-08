@@ -23,7 +23,28 @@ function controllerFn($rootScope,$scope, $injector, $http, toaster) {
         group: "六台",
         Index: 6
     }];
+    $scope.form={
+        query:""
+    }
+    $scope.visible = function (item) {
+        return !($scope.form.query && $scope.form.query.length > 0
+        && item.title.indexOf($scope.form.query) == -1);
+// if(item.title.indexOf($scope.form.query)!=-1){
+//     return true;
+// }else{
+//     return !($scope.form.query&&$scope.form.query.length>0&&item.title.indexOf($scope.form.query)==-1)
+// }
 
+    };
+$scope.show=function(item){
+      for(var i=0;i<item.nodes.length;i++){
+          if(item.nodes[i].title.indexOf($scope.form.query)!=-1){
+              return true;
+              break;
+          }
+      }
+
+};
     $scope.data2Node = [{
         'id': 1,
         'title': 'master',
@@ -80,18 +101,39 @@ function controllerFn($rootScope,$scope, $injector, $http, toaster) {
         'id': 2,
         'title': 'node2',
         'nodrop': true, // An arbitrary property to check in custom template for nodrop-enabled
-        'nodes': []
+        'nodes': [   {
+            'id': 11,
+            'title': 'cas'
+        },
+            {
+                'id': 12,
+                'title': 'console'
+            }]
     }, {
         'id': 3,
         'title': 'node3',
         'nodrop': true, // An arbitrary property to check in custom template for nodrop-enabled
-        'nodes': []
+        'nodes': [   {
+            'id': 11,
+            'title': 'cas'
+        },
+            {
+                'id': 12,
+                'title': 'console'
+            }]
 
     }, {
         'id': 4,
         'title': 'node4',
         'nodrop': true, // An arbitrary property to check in custom template for nodrop-enabled
-        'nodes': []
+        'nodes': [   {
+            'id': 11,
+            'title': 'cas'
+        },
+            {
+                'id': 12,
+                'title': 'console'
+            }]
     }];
 
     $scope.data6Node = [{
@@ -111,29 +153,64 @@ function controllerFn($rootScope,$scope, $injector, $http, toaster) {
         'id': 2,
         'title': 'node2',
         'nodrop': true, // An arbitrary property to check in custom template for nodrop-enabled
-        'nodes': []
+        'nodes': [   {
+            'id': 11,
+            'title': 'cas'
+        },
+            {
+                'id': 12,
+                'title': 'console'
+            }]
     }, {
         'id': 3,
         'title': 'node3',
         'nodrop': true, // An arbitrary property to check in custom template for nodrop-enabled
-        'nodes': []
+        'nodes': [   {
+            'id': 11,
+            'title': 'cas'
+        },
+            {
+                'id': 12,
+                'title': 'console'
+            }]
 
     }, {
         'id': 4,
         'title': 'node4',
         'nodrop': true, // An arbitrary property to check in custom template for nodrop-enabled
-        'nodes': []
+        'nodes': [   {
+            'id': 11,
+            'title': 'cas'
+        },
+            {
+                'id': 12,
+                'title': 'console'
+            }]
     }, {
         'id': 5,
         'title': 'node5',
         'nodrop': true, // An arbitrary property to check in custom template for nodrop-enabled
-        'nodes': []
+        'nodes': [   {
+            'id': 11,
+            'title': 'cas'
+        },
+            {
+                'id': 12,
+                'title': 'console'
+            }]
 
     }, {
         'id': 6,
         'title': 'node6',
         'nodrop': true, // An arbitrary property to check in custom template for nodrop-enabled
-        'nodes': []
+        'nodes': [   {
+            'id': 11,
+            'title': 'cas'
+        },
+            {
+                'id': 12,
+                'title': 'console'
+            }]
     }];
    //选择哪个负载节点配置依赖于第一步基础配置中节点的个数，同理下面展示的负载配置也与节点个数相符合。
     $scope.isActive = $rootScope.nodeNumber||2;
@@ -145,6 +222,7 @@ function controllerFn($rootScope,$scope, $injector, $http, toaster) {
 
     //选择负载配置的节点数
     $scope.select = function (data) {
+        $scope.form.query="";
         if (data && data.Index != 'diy') {
             $scope.isActive = data.Index;
             if ($scope.isActive == 2) {
@@ -206,5 +284,6 @@ function controllerFn($rootScope,$scope, $injector, $http, toaster) {
     $scope.findNodes = function () {
 
     };
+
 
 }
