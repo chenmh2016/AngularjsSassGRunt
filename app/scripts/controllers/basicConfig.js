@@ -8,7 +8,7 @@
  * Controller of the deployWebApp
  */
 angular.module('deployWebApp')
-    .controller('MainCtrl', controllerFn);
+    .controller('BasicConfigCtrl', controllerFn);
     controllerFn.$inject = ['$rootScope','$scope', '$injector','$http','toaster'];
     function controllerFn($rootScope,$scope, $injector,$http,toaster) {
     $(function () {
@@ -59,16 +59,16 @@ angular.module('deployWebApp')
 
     };
     $scope.run();
-    $scope.get=function(){
-        $http({
-            method:"GET",
-            params:{"data":"1"},
-            url:"/data/addInfo.json"
-        });
-    };
+    // $scope.get=function(){
+    //     $http({
+    //         method:"GET",
+    //         params:{"data":"1"},
+    //         url:"/data/addInfo.json"
+    //     });
+    // };
     $scope.addInfomation=function(){
         $rootScope.nodeNumber=$scope.slaveNode.length+1;
-    console.log("nodeLength",$rootScope.nodeNumber);
+        console.log("nodeLength",$rootScope.nodeNumber);
         var string=angular.toJson($scope.formData);
         $http({
             method: "GET",

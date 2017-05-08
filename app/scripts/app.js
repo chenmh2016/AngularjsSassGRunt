@@ -41,16 +41,22 @@ app.config(function($stateProvider){
   //  template:'<div ui-view></div>',
   //  abstract:true
   //})
-      .state('yundun',{
-        url:'/yundun',
-        templateUrl:'views/main.html',
-        controller:'MainCtrl as vm'
+      .state('basicConfig',{
+        url:'/basicConfig',
+        templateUrl:'views/basicConfig.html',
+        controller:'BasicConfigCtrl as vm'
       })
 
-      .state('test',{
-        url:'/test',
-        templateUrl:'views/test.html',
-        controller:'loadCtrl as vm'
+      .state('loadConfig',{
+        url:'/loadConfig',
+        templateUrl:'views/loadConfig.html',
+        controller:'LoadConfigCtrl as vm'
+      })
+
+      .state('stepBar',{
+          url:'/stepBar',
+          templateUrl:'views/stepBar.html',
+          controller:'StepBarCtrl as vm'
       })
 });
 app.factory('myInterceptor',function($q,$cookies){

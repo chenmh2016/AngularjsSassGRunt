@@ -1,0 +1,19 @@
+
+{
+  "code":0,
+  "message":"返回成功",
+  "success":true,
+  "data":[
+    {  "str":"搭建k8s",
+    "active":true},{
+      "str":"修改haproxy.cfg配置",
+      "active":true
+    },{
+      "str":"制作镜像",
+      "active":true
+    },{
+      "str":"数据库",
+      "active":false
+    }]
+
+}

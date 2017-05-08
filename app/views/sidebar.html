@@ -12,7 +12,10 @@
       </div>
       <!--子节点显示与否，诎诘语当前节点的model：$folder-->
       <ul ng-if="item1.items&&!item1.$folded" class="sidebar-content">
-        <li ng-repeat="item2 in item1.items"  ui-sref="{{item2.state}}"  ng-class="{active: isActive==item2.groupIndex}" ng-click="select(item2)">
+          <!--以下分别是两种方法控制左侧侧边栏选中状态和路由状态的匹配关系，第一行的方法是从切换导航项出发，给isActive赋值为当前item的index，但是缺陷是当刷新页面或者其他跳转到该页面路由的时候，不会讲侧边栏的导航选中；-->
+          <!--所以第一行的方法利用了$state.includes方法，给sidebar的路由中定义includes属性，当页面所在的路由包含在该侧边栏导航项的includes中的时候就会选中侧边栏，是比较推荐的方法。-->
+        <!--<li ng-repeat="item2 in item1.items"  ui-sref="{{item2.state}}"  ng-class="{active: isActive==item2.groupIndex}" ng-click="select(item2)">-->
+        <li ng-repeat="item2 in item1.items"  ui-sref="{{item2.state}}" ng-class="{active:checkActive(item2)}">
            <div class="sidebar-content-icon"> <span class="{{item2.icon}}"></span></div>
            <span ng-class="{'mini-content':isSidebarFold}"> {{item2.title}}</span>
         </li>

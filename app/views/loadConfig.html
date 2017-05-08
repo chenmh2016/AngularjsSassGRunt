@@ -24,7 +24,7 @@
                     <!-- Nested node template -->
                     <script type="text/ng-template" id="nodes_renderer.html">
                         <div ui-tree-handle class="tree-node tree-node-content">
-                            <a class="btn btn-success btn-xs" ng-if="(node.nodes && node.nodes.length > 0&&node.title.indexOf(form.query)!=-1)||show(node)" data-nodrag
+                            <a class="btn btn-success btn-xs" ng-if="(node.nodes && node.nodes.length > 0&&node.title.indexOf(form.query)!=-1)||show(node)"
                                ng-click="toggle(this)" ><span
                                     class="glyphicon"
                                     ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed }"></span></a>
@@ -107,7 +107,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <button class="btn btn-primary pull-right">提交</button>
+            <button class="btn btn-primary pull-right" ng-click="saveConfig()">提交</button>
         </div>
     </div>
 </div>

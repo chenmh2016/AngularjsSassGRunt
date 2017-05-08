@@ -1,0 +1,8 @@
+<div class="stepBarPage" >
+    <div ng-repeat="step in steps" ng-class="{true:'active',false:'unactive'}[step.active]" class="step-block step-block-vertical">
+        <p class="index">{{$index+1}}</p>
+        <p class="str">{{step.str}}</p>
+        <span class="btn btn-danger" ng-show="!step.active">重新执行</span>
+        <img src="images/step-arrow.png" ng-if="!$last" class="arrow" />
+    </div>
+</div>
